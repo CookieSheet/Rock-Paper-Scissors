@@ -14,11 +14,13 @@
 import random 
 
 def rps_game():
-    score = {}
+
+    print("Welcome to Rock, Paper, Scissors")
+    user_name = input("Whats your name? ")
+
     # active = True
     while True:
-        print("Welcome to Rock, Paper, Scissors")
-        user_name = input("Whats your name? ")        
+        score = {user_name: 0, "Computer": 0}  
         menu_input = input("""
                         What would you like to do?
                         - Play game(P)
@@ -27,7 +29,8 @@ def rps_game():
                         - Quit (Q)
                     """)
         if menu_input.lower() == "r":
-            print(""" Our rules statement """)
+            print(""" The Rules of Rock, Paper, Scissors:
+                    """)
 
         elif menu_input.lower() == "n":
             user_name = input("Whats your name? ")
@@ -42,8 +45,51 @@ def rps_game():
                     rps = input("One two three shoot! ") # Need to make a list of Rock Paper Scissors
                     comp_shot = random.randint(0,2)
                     print(game_list[comp_shot])
+                    # You chose Rock
+                    if rps.lower() == 'rock':
+                        if comp_shot == 0:
+                            print("You Tied")
+                        elif comp_shot == 1:
+                            score["Computer"] += 1
+                            print("You lost")
+                        elif comp_shot == 2:
+                            print("You Won!")
+                            score[user_name] += 1
+                     
+                    # You chose Paper
+                    elif rps.lower() == 'paper':
+                        if comp_shot == 0:
+                            print("You Win!")
+                            score[user_name] += 1
+                        elif comp_shot == 1:
+                            print("You Tied")
+                        elif comp_shot == 2:
+                            print("You Lost")
+                            score["Computer"] += 1
+                     
+                    # You chose Scissors
+                    elif rps.lower() == 'scissors':
+                        if comp_shot == 0:
+                            print("You Lost")
+                            score["Computer"] += 1
+                        elif comp_shot == 1:
+                            print("You Won!")
+                            score[user_name] += 1
+                        elif comp_shot == 2:
+                            print("You Tied")
+                     
+                    else:
+                        print("This is not an option, do you need to see the rules?")
 
-        
+                    print(f"""The Scores are:
+                    {user_name}: {score[user_name]}
+                    Computer: {score["Computer"]}  """)
+                    play_on = input("Whould you like to play again?")
+
+            else:
+                print("This is not an option.")
+
+                    
         elif menu_input.lower() == "q":
             break
 
