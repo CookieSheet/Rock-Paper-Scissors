@@ -29,7 +29,8 @@ def rps_game():
                         - Quit (Q)
                     """)
         if menu_input.lower() == "r":
-            print(""" Our rules statement """)
+            print(""" The Rules of Rock, Paper, Scissors:
+                    """)
 
         elif menu_input.lower() == "n":
             user_name = input("Whats your name? ")
