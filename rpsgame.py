@@ -31,18 +31,22 @@ def rps_game():
                     """)
         if menu_input.lower() == "r":
             print(""" 
-                      The Rules of Rock, Paper, Scissors:
+                      The Rules of Rock, Paper, Scissors, Lava, Rain:
                       
-                      Rock Beats Scissors, 
-                      Scissors beats Paper
-                      Paper beats Rock.
+                      Rock Beats Scissors and Lava
+                      Scissors beats Paper and Rain
+                      Paper beats Rock and Rain
+                      Lava beats Scissors and Paper
+                      Rain beats Rock and  Lava
+
 
                       Choose your weapon wisely!
                     """)
 
         elif menu_input.lower() == "n":
             user_name = input("Whats your name? ")
-            score[user_name] = 0
+            if user_name not in score:
+                score[user_name] = 0
             score["Computer"] = 0
 
         elif menu_input.lower() == "p":
@@ -52,7 +56,7 @@ def rps_game():
             elif play_on.lower() == "y":
                 game_list = ["Rock!", "Paper!", "Scissors!", "Lava!", "Rain!"]
                 while play_on.lower() == "y":
-                    rps = input("One two three shoot! ") 
+                    rps = input("\nOne two three shoot! ") 
                     comp_shot = random.randint(0,4)           #random generator
                     print(game_list[comp_shot])
                                                               
@@ -132,18 +136,17 @@ def rps_game():
                             print("You Won!")
                             score[user_name] += 1
                         elif comp_shot == 3:
-                            print("You Tied")
-                        elif comp_shot == 4:
-                            print("You Lose!")
+                            print("You Lose")
                             score["Computer"] += 1
+                        elif comp_shot == 4:
+                            print("You Tied!")
                         
                      
                     else:
                         print("This is not an option, do you need to see the rules?")
 
                     print(f"""The Scores are:
-                    {user_name}: {score[user_name]}
-                    Computer: {score["Computer"]}  """)
+                    {user_name}: {score[user_name]}   ..........   Computer: {score["Computer"]}  """)
                     play_on = input("Whould you like to play again?(y,n) ")
 
             else:
