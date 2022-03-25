@@ -31,11 +31,14 @@ def rps_game():
                     """)
         if menu_input.lower() == "r":
             print(""" 
-                      The Rules of Rock, Paper, Scissors:
+                      The Rules of Rock, Paper, Scissors, Lava, Rain:
                       
-                      Rock Beats Scissors, 
-                      Scissors beats Paper
-                      Paper beats Rock.
+                      Rock Beats Scissors and Lava
+                      Scissors beats Paper and Rain
+                      Paper beats Rock and Rain
+                      Lava beats Scissors and Paper
+                      Rain beats Rock and  Lava
+
 
                       Choose your weapon wisely!
                     """)
@@ -132,10 +135,10 @@ def rps_game():
                             print("You Won!")
                             score[user_name] += 1
                         elif comp_shot == 3:
-                            print("You Tied")
-                        elif comp_shot == 4:
-                            print("You Lose!")
+                            print("You Lose")
                             score["Computer"] += 1
+                        elif comp_shot == 4:
+                            print("You Tied!")
                         
                      
                     else:
