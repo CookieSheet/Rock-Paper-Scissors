@@ -45,7 +45,8 @@ def rps_game():
 
         elif menu_input.lower() == "n":
             user_name = input("Whats your name? ")
-            score[user_name] = 0
+            if user_name not in score:
+                score[user_name] = 0
             score["Computer"] = 0
 
         elif menu_input.lower() == "p":
@@ -55,7 +56,7 @@ def rps_game():
             elif play_on.lower() == "y":
                 game_list = ["Rock!", "Paper!", "Scissors!", "Lava!", "Rain!"]
                 while play_on.lower() == "y":
-                    rps = input("One two three shoot! ") 
+                    rps = input("\nOne two three shoot! ") 
                     comp_shot = random.randint(0,4)           #random generator
                     print(game_list[comp_shot])
                                                               
@@ -145,8 +146,7 @@ def rps_game():
                         print("This is not an option, do you need to see the rules?")
 
                     print(f"""The Scores are:
-                    {user_name}: {score[user_name]}
-                    Computer: {score["Computer"]}  """)
+                    {user_name}: {score[user_name]}   ..........   Computer: {score["Computer"]}  """)
                     play_on = input("Whould you like to play again?(y,n) ")
 
             else:
