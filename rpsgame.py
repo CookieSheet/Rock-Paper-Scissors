@@ -1,21 +1,9 @@
-# Notes
-# What does importing clearOutput do?
-#
-# Initial Greeting
-# Whats your name?
-# Initial Menu - Play game, change name, Rules
-# Play game?  are you ready to play? 
-# r/p/s? -
-# display point system, winner, loser? 
-# Play game? 
-#
-# How to center text or align in some way for menu display?
-# This is Cookie and Hootie's Rock/Paper/Scissors generator
+# This is Cookie and Hootie's Rock/Paper/Scissors/ generator
 import random 
 
 def rps_game():
 
-    print("\nWelcome to Rock, Paper, Scissors")
+    print("\nWelcome to Rock, Paper, Scissors, Lava, Rain")
     score = {"Computer": 0}
     user_name = input("\nWhats your name? ")
     score[user_name] = 0
@@ -29,6 +17,7 @@ def rps_game():
                         - Rules(R)
                         - Quit (Q)
                     """)
+
         if menu_input.lower() == "r":
             print(""" 
                       The Rules of Rock, Paper, Scissors, Lava, Rain:
@@ -39,7 +28,8 @@ def rps_game():
                       Lava beats Scissors and Paper
                       Rain beats Rock and  Lava
 
-
+                      When prompted \"One two three shoot!\"
+                      type the name of your weapon in...
                       Choose your weapon wisely!
                     """)
 
@@ -51,10 +41,13 @@ def rps_game():
 
         elif menu_input.lower() == "p":
             play_on = input("Are you ready to play(y/n?) ")
+
             if play_on.lower() == "n":
                 print(menu_input)
+
             elif play_on.lower() == "y":
                 game_list = ["Rock!", "Paper!", "Scissors!", "Lava!", "Rain!"]
+                
                 while play_on.lower() == "y":
                     rps = input("\nOne two three shoot! ") 
                     comp_shot = random.randint(0,4)           #random generator
@@ -106,8 +99,7 @@ def rps_game():
                             score["Computer"] += 1
                         elif comp_shot == 4:
                              print("You Win!")
-                             score[user_name] += 1
-                            
+                             score[user_name] += 1   
 
                     elif rps.lower() == 'lava':               # You chose Lava
                         if comp_shot == 0:
@@ -141,26 +133,25 @@ def rps_game():
                         elif comp_shot == 4:
                             print("You Tied!")
                         
-                     
                     else:
                         print("This is not an option, do you need to see the rules?")
 
                     print(f"""The Scores are:
                     {user_name}: {score[user_name]}   ..........   Computer: {score["Computer"]}  """)
                     play_on = input("Whould you like to play again?(y,n) ")
+                    if play_on.lower() != "y" and play_on.lower() != "n":
+                        print("This is not an answer!\n")
+                        play_on = input("Would you like to play again?(y,n) ")
 
             else:
                 print("This is not an option.")
 
-                    
         elif menu_input.lower() == "q":
             working = False
 
         else:
             print("This is not an option")
 
-
-    
 rps_game()
 
 
